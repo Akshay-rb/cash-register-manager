@@ -9,7 +9,8 @@ const availableNotes = [2000,500,100,20,10,5,1]
 // event listner for check button click
 checkButton.addEventListener('click', () => {
     hideMessage()
-    if(typeof(billAmount)=== Number && typeof(cashGiven)=== Number){
+    // if(typeof(billAmount.value) !== isNaN && typeof(cashGiven.value) !== isNaN){
+        if(!isNaN(billAmount.value) && !isNaN(cashGiven.value)){
         if(billAmount.value > 0){
             if(cashGiven.value >= billAmount.value){
                 const amountToBeReturned = cashGiven.value - billAmount.value

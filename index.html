@@ -8,25 +8,28 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <h1 class="heading">Cash Register Manager</h1>
-      <p class="description">
-        Enter the bill amount and cash given by customer and know minimum number
-        of notes to return
-      </p>
-      <label for="bill-amount">Bill amount:</label>
-      <input type="text" id="bill-amount" />
+    <div class="container container-centre">
+      <header class="header">
+        <h1 class="heading">Cash Register Manager</h1>
+        <p class="description">
+          Enter the bill amount and cash given by customer and know minimum
+          number of notes to return
+        </p>
+      </header>
+      <label for="bill-amount" class="input-label">Bill amount:</label>
+      <input type="text" id="bill-amount" class="input" />
       <!-- <button></button> -->
-      <label for="cash-given">Cash Given:</label>
-      <input type="text" id="cash-given" />
+      <label for="cash-given" class="input-label">Cash Given:</label>
+      <input type="text" id="cash-given" class="input" />
       <button id="check-button">Check</button>
       <p id="error-message"></p>
+
       <table class="change-table">
         <caption>
-          Return Change
+          Return Change :
         </caption>
-        <tr>
-          <th>No of notes</th>
+        <tr class="table-row">
+          <th class="table-column">No of notes</th>
           <td class="no-of-notes"></td>
           <td class="no-of-notes"></td>
           <td class="no-of-notes"></td>
@@ -35,8 +38,8 @@
           <td class="no-of-notes"></td>
           <td class="no-of-notes"></td>
         </tr>
-        <tr>
-          <th>Note</th>
+        <tr class="table-row">
+          <th class="table-column">Note</th>
           <td>2000</td>
           <td>500</td>
           <td>100</td>
