@@ -12,48 +12,49 @@ const availableNotes = [2000,500,100,20,10,5,1]
 
 //event listner for next button click 
 nextButton.addEventListener('click', () =>{
+    let billAmountValue = billAmount.value
     hideMessage()
-    if(billAmount.value.length === 0 || isNaN(billAmount.value)){
+    if(billAmountValue.length === 0 || Number(billAmountValue) === 0){
         billAmountErrorMessage.style.color = 'red'
         billAmountErrorMessage.innerText ="Enter valid bill amout"
+        return
     } else{
         billAmountErrorMessage.style.display = 'none'
-    if(!isNaN(billAmount.value) ){
-        if(billAmount.value > 0){
+    if(!isNaN(billAmountValue) ){
+        if(billAmountValue > 0){
             cashGivenSection.style.display = 'block'
+            return
+        } else{
+            billAmountErrorMessage.style.color = 'red'
+            billAmountErrorMessage.innerText ="Enter valid bill amout"
         }
     }
 }
 })
 
-// event listner for check button click
-checkButton.addEventListener('click', () => {
-    hideMessage()
-    // if(typeof(billAmount.value) !== isNaN && typeof(cashGiven.value) !== isNaN){
-        if(!isNaN(billAmount.value) && !isNaN(cashGiven.value)){
-        if(billAmount.value > 0){
-            if(cashGiven.value === billAmount.value){
-                tableSection.style.display = 'none'
-                showMessage("No change to be returned")
-            }
-             else if(cashGiven.value >= billAmount.value){
-                tableSection.style.display = 'block'
-                const amountToBeReturned = cashGiven.value - billAmount.value
-                calculateChange(amountToBeReturned)
-            } 
-            else{
-                tableSection.style.display = 'none'
-                showMessage("cash provided should atleast be equal to the bill amount")
-            }
-        }else{
-            showMessage("Invalid bill amount")
-        }
 
-    }else {
-        tableSection.style.display = 'none'
-        showMessage("Only numbers accepted")
-    }
-   
+checkButton.addEventListener('click', () =>{
+    let billAmountValue = Number(billAmount.value)
+    let cashGivenValue = Number(cashGiven.value)
+    tableSection.style.display = 'none'
+    hideMessage()
+        if(billAmountValue >0 && cashGivenValue>0){
+            if(billAmountValue> cashGivenValue){
+                showMessage('cash provided should atleast be equal to the bill amount')
+                tableSection.style.display = 'none'
+                return
+            }
+            if(billAmountValue === cashGivenValue){
+                tableSection.style.display = 'none'
+                showMessage('No change to be returned')
+                return
+            }
+            tableSection.style.display = 'block'
+            const amountToBeReturned = cashGiven.value - billAmount.value
+            calculateChange(amountToBeReturned)
+        }else{
+                showMessage('Enter valid bill amount and cash given')
+        }
 })
 
 // function to determine the change and denominations to be returned
